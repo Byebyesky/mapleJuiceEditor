@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>MapleJuiceStory - Savegame Editor</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="drop-area">
+            <form class="my-form">
+                <p>Load your save folder with the file dialog</p>
+                <input type="file" id="fileElem" webkitdirectory directory multiple onchange="handleFiles(this.files)">
+                <label class="button" for="fileElem">Select Folder</label>
+                
+            </form>
+        </div>
+        <div id="edit-area">
+            <div class="tab">
+                <button class="tablinks" onclick="showSummary()">Summary</button>
+                <button class="tablinks">Achievements</button>
+                <button class="tablinks">PlayerData</button>
+                <button class="tablinks">Inventory</button>
+                <button class="tablinks">Quests</button>
+                <button class="tablinks">Global Flags</button>
+            </div>
+            <div id="contents">
+                <div id="Summary">
+                    <div class="content-element">
+                        <p>Name:</p>
+                        <input type="text" maxlength="8" id="summaryName">
+                        
+                        <p>Level:</p>
+                        <input type="number" min="0" max="255" id="summaryLevel">
+                        
+                        <p>Year / Month / Day / Hours / Minutes:</p>
+                        <div style="display: inline-block;">
+                            <input type="number" min="0" max="65535" class="dateInput" id="summaryYear">
+                            <input type="number" min="0" max="255" class="dateInput" id="summaryMonth">
+                            <input type="number" min="0" max="255" class="dateInput" id="summaryDay">
+                            <input type="number" min="0" max="255" class="dateInput" id="summaryHour">
+                            <input type="number" min="0" max="255" class="dateInput" id="summaryMinute">
+                        </div>
+                        
+                        <p>Chapter:</p>
+                        <select id="summaryChapter"></select>
+
+                        <p>Playtime:</p>
+                        <input type="number" min="0" max="2147483647" id="summaryPlaytime">
+                    </div>
+                </div>
+                <div id="Achievements"></div>
+                <div id="PlayerData"></div>
+                <div id="Inventory"></div>
+                <div id="Quests"></div>
+                <div id="GlobalFlags"></div>
+            </div>
+            <label class="button" id="save" onclick="saveFiles()">Save File</label>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html>
