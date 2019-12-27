@@ -19,14 +19,6 @@ let editArea = document.getElementById('edit-area');
 let dropArea = document.getElementById('drop-area');
 let contents = document.getElementById('contents');
 
-let summaryData;
-let achivementData;
-let globalFlagData;
-let subQuestData;
-let mainQuestData;
-let inventoryData;
-let playerData;
-
 let summaryName = document.getElementById('summaryName');
 let summaryLevel = document.getElementById('summaryLevel');
 let summaryChapter = document.getElementById('summaryChapter');
@@ -37,6 +29,15 @@ let summaryHour = document.getElementById('summaryHour');
 let summaryMinute = document.getElementById('summaryMinute');
 let summaryPlaytime = document.getElementById('summaryPlaytime');
 
+let summaryData;
+let achivementData;
+let globalFlagData;
+let subQuestData;
+let mainQuestData;
+let inventoryData;
+let playerData;
+
+//First time init
 function init() {
     //Setup Summary tab
     summaryName.addEventListener("change", function() {summaryData.name = this.value})
@@ -49,6 +50,7 @@ function init() {
     summaryMinute.addEventListener("change", function() { summaryData.minute = parseInt(this.value, 10) });
     summaryPlaytime.addEventListener("change", function() { summaryData.playtime = parseInt(this.value, 10)});
 
+    //Populate Chapter Names
     for(let i = 1; i < definitionData.chaptersEN.length; i++) {
         let option = document.createElement('option');
         option.text = definitionData.chaptersEN[i];
@@ -88,7 +90,7 @@ function swap32(val) {
 
 //???
 function handleFiles(files) {
-    if(files.length == 0) {
+    if(files.length === 0) {
         alert("No files selected")
         return;
     }
@@ -97,19 +99,19 @@ function handleFiles(files) {
     files.forEach(function(element, i) {
         readUploadedFileAsBinary(element).then( binaryData => {
             binaryData = new DataView(binaryData)
-            if(element.name.includes("summary") && element.size == 64) {
+            if(element.name.includes("summary") && element.size === 64) {
                 parseSummary(binaryData)
-            } else if (element.name == 'achievement.dat' && element.size == 396) {
+            } else if (element.name === 'achievement.dat' && element.size === 396) {
                 parseArchivement(binaryData)
-            } else if (element.name == 'globalFlag.dat' && element.size == 184) {
+            } else if (element.name === 'globalFlag.dat' && element.size === 184) {
                 parseGlobalFlag(binaryData)
-            } else if (element.name == 'inventory.dat') {
+            } else if (element.name === 'inventory.dat') {
                 parseInventory(binaryData);
-            } else if (element.name == 'mainQuest.dat') {
+            } else if (element.name === 'mainQuest.dat') {
                 parseMainQuest(binaryData);
-            } else if (element.name == 'playerData.dat') {
+            } else if (element.name === 'playerData.dat') {
                 parsePlayerData(binaryData);
-            } else if (element.name == 'subQuest.dat') {
+            } else if (element.name === 'subQuest.dat') {
                 parseSubQuest(binaryData);
             }
         })
@@ -119,17 +121,6 @@ function handleFiles(files) {
     init()
 }
 
-function makeField(text, type, value) {
-    let contentDiv = document.createElement('div');
-    let textField = document.createElement('p');
-    textField.textContent = text;
-    let inputField = document.createElement(type);
-    inputField.value = value;
-    contentDiv.appendChild(textField)
-    contentDiv.appendChild(inputField)
-    return contentDiv
-}
-
 //Classes
 class Summary {
     constructor(data) {
@@ -137,7 +128,7 @@ class Summary {
         this.name = "";
         for(let index = 0; index < 16; index+=2) {
             let char = swap16(data.getInt16(index));
-            if(char == 0) break;
+            if(char === 0) break;
             this.name += String.fromCharCode(char)
         }
 
