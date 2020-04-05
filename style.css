@@ -65,7 +65,7 @@ p {
     flex-direction: column;
     justify-content: center;
     background: white;
-    border: solid black;
+    border: 2px solid black;
     border-radius: 20px;
     width: 50vw;
     font-family: sans-serif;
@@ -81,7 +81,7 @@ p {
    /* Style the tab */
 .tab {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     overflow: hidden;
     border: 1px solid #ccc;
