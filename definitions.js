@@ -1,4 +1,4 @@
-export let chaptersEN = [
+let chaptersEN = [
     "Dummy",
     "A Stolen Skill",
     "Pirate Revolt",
@@ -13,7 +13,7 @@ export let chaptersEN = [
     "Epilogue"
 ]
 
-export let mainQuestsEN = [
+let mainQuestsEN = [
     "Late for Training 1",
     "Late for Training 2",
     "Stolen Secret",
@@ -59,7 +59,37 @@ export let mainQuestsEN = [
     "True Battle Mage"
 ]
 
-export let mainQuestsJP = [
+/*
+let subQuestsEN = {
+    : "Lost Earring",
+    : "Cause Of The Trouble",
+    : "Missing Hella",
+    : "Hella Is Safe",
+    : "Lonely Moppie",
+    : "Nependeath’s Remedy",
+    : "Antidote Needed",
+    : "Red Scorpions’ Treasure",
+    : "A Pirate In The Desert",
+    : "The Need For Life Alchemy",
+    : "Problems With Life Alchemy",
+    : "Lloyd’s Research on Keeny",
+    : "Too Many Mosquitoes",
+    : "A Pill Is Necessary",
+    : "Former Village Chief’s Testament",
+    : "Monster In The Forest",
+    : "Grandfather’s Fishing Rod",
+    : "Tae Gong’s Love For His Wife",
+    : "Menace of Shaqra",
+    : "Cease Living",
+    : "Broken Telephone Booth",
+    : "No Content",
+    : "No Content",
+    : "Bring Poopa Egg 1",
+    : "Bring Poopa Egg 2",
+    : "Bring Poopa Egg 3"
+}
+
+let mainQuestsJP = [
     "訓練時間に遅れちゃう１",
     "訓練時間に遅れちゃう２",
     "盗まれた秘技",
@@ -105,37 +135,7 @@ export let mainQuestsJP = [
     "真のバトルメイジ"
 ]
 
-/*
-export let subQuestsEN = {
-    : "Lost Earring",
-    : "Cause Of The Trouble",
-    : "Missing Hella",
-    : "Hella Is Safe",
-    : "Lonely Moppie",
-    : "Nependeath’s Remedy",
-    : "Antidote Needed",
-    : "Red Scorpions’ Treasure",
-    : "A Pirate In The Desert",
-    : "The Need For Life Alchemy",
-    : "Problems With Life Alchemy",
-    : "Lloyd’s Research on Keeny",
-    : "Too Many Mosquitoes",
-    : "A Pill Is Necessary",
-    : "Former Village Chief’s Testament",
-    : "Monster In The Forest",
-    : "Grandfather’s Fishing Rod",
-    : "Tae Gong’s Love For His Wife",
-    : "Menace of Shaqra",
-    : "Cease Living",
-    : "Broken Telephone Booth",
-    : "No Content",
-    : "No Content",
-    : "Bring Poopa Egg 1",
-    : "Bring Poopa Egg 2",
-    : "Bring Poopa Egg 3"
-}
-
-export let subQuestsJP = {
+let subQuestsJP = {
     : "失くしたイヤリング",
     : "故障の原因",
     : "行方不明になったヘラー",

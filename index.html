@@ -27,25 +27,25 @@
                 <div id="Summary">
                     <div class="content-element">
                         <p>Name:</p>
-                        <input type="text" maxlength="8" id="summaryName">
+                        <input type="text" maxlength="8" class="summaryInput" id="summaryName">
                         
                         <p>Level:</p>
-                        <input type="number" min="0" max="255" id="summaryLevel">
+                        <input type="number" min="0" max="255" class="numberInput summaryInput" id="summaryLevel">
                         
                         <p>Year / Month / Day / Hours / Minutes:</p>
-                        <div style="display: inline-block;">
-                            <input type="number" min="0" max="65535" class="dateInput" id="summaryYear">
-                            <input type="number" min="0" max="255" class="dateInput" id="summaryMonth">
-                            <input type="number" min="0" max="255" class="dateInput" id="summaryDay">
-                            <input type="number" min="0" max="255" class="dateInput" id="summaryHour">
-                            <input type="number" min="0" max="255" class="dateInput" id="summaryMinute">
+                        <div style="display: block;">
+                            <input type="number" min="0" max="65535" class="dateInput summaryInput" id="summaryYear">
+                            <input type="number" min="0" max="255" class="dateInput summaryInput" id="summaryMonth">
+                            <input type="number" min="0" max="255" class="dateInput summaryInput" id="summaryDay">
+                            <input type="number" min="0" max="255" class="dateInput summaryInput" id="summaryHour">
+                            <input type="number" min="0" max="255" class="dateInput summaryInput" id="summaryMinute">
                         </div>
                         
                         <p>Chapter:</p>
-                        <select id="summaryChapter"></select>
+                        <select class="summaryInput" id="summaryChapter"></select>
 
                         <p>Playtime:</p>
-                        <input type="number" min="0" max="2147483647" id="summaryPlaytime">
+                        <input type="number" min="0" max="2147483647" class="summaryInput" id="summaryPlaytime">
                     </div>
                 </div>
                 <div id="Achievements"></div>
@@ -57,5 +57,10 @@
             <label class="button" id="save" onclick="saveFiles()">Save File</label>
         </div>
     </body>
+    <script src="lib/FileSaver.js"></script>
+    <script src="lib/jszip.min.js"></script>
+    <script src="util.js"></script>
+    <script src="definitions.js"></script>
+    <script src="Summary.js"></script>
     <script src="main.js"></script>
 </html>

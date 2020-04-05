@@ -1,94 +1,120 @@
+body {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#d4e4ef+0,86aecc+100;Grey+Gloss */
+    background: #d4e4ef; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #d4e4ef 0%, #86aecc 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover,  #d4e4ef 0%,#86aecc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center,  #d4e4ef 0%,#86aecc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
 #drop-area {
-    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    border: 2px dashed rgb(149, 147, 147);
     border-radius: 20px;
     width: 50vw;
     font-family: sans-serif;
     margin: 100px auto;
     padding: 20px;
-  }
-  #drop-area.highlight {
+}
+
+#drop-area.highlight {
     border-color: purple;
-  }
-  p {
-    margin-top: 0;
-  }
-  .my-form {
+}
+
+p {
+    margin: 10px;
+    padding: 0;
+}
+
+.my-form {
     margin-bottom: 10px;
-  }
-  #gallery {
+}
+
+#gallery {
     margin-top: 10px;
-  }
-  #gallery img {
+}
+
+#gallery img {
     width: 150px;
     margin-bottom: 10px;
     margin-right: 10px;
     vertical-align: middle;
-  }
-  .button {
-    display: inline-block;
+}
+
+.button {
     padding: 10px;
-    background: #ccc;
+    margin: 10px;
+    text-align: center;
+    background: #f1f1f1;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  .button:hover {
-    background: #ddd;
-  }
-  #fileElem {
-    display: none;
-  }
+    border: 1px solid #f1f1f1;
+}
 
-  #edit-area {
+.button:hover {
+    background: #ddd;
+}
+
+#fileElem {
     display: none;
+}
+
+#edit-area {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
     border: solid black;
     border-radius: 20px;
     width: 50vw;
     font-family: sans-serif;
     margin: 100px auto;
     padding: 20px;
-  }
+}
 
-  #contents {
+#contents {
     display: none;
-  }
+    justify-content: center;
+}
 
    /* Style the tab */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
+    background-color: inherit;
+    outline: none;
+    cursor: pointer;
+    padding: 1vh 1vw;
+    transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+    background-color: #ccc;
 }
 
 /* Style the tab content */
-.content-element {
-  /*display: none;*/
+/*.content-element {
+  display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-} 
+} */
 
 .dateInput {
-  width: 60px;
+    width: 60px;
 }
