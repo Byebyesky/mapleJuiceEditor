@@ -26,11 +26,19 @@ let playerData;
 //First time init
 function init() {
     //Populate Chapter Names
-    for(let i = 1; i < chaptersEN.length; i++) {
+    for(const [index, element] of chaptersEN.entries()) {
         let option = document.createElement('option');
-        option.text = chaptersEN[i];
-        option.value = i;
+        option.text = element;
+        option.value = index;
         summaryChapter.add(option)
+    }
+
+    //Populate Main Quest Names
+    for(const [index, element] of mainQuestsEN.entries()) {
+        let option = document.createElement('option');
+        option.text = element;
+        option.value = index;
+        questsMainQuest.add(option)
     }
 }
 
@@ -86,8 +94,8 @@ function handleFiles(files) {
 
 //Classes
 class saveFile {
-    constructor(data, definition) {
-        //this.file =
+    constructor(data, definition, selector) {
+        this.selector = selector;
         for(const property in definition) {
             if(definition[property].dataType == "string") {
                 this[property] = "";
@@ -104,9 +112,15 @@ class saveFile {
     }
 
     showData() {
-        let inputFields = document.querySelectorAll(".summaryInput");
+        let content = document.getElementById(this.selector+"-content");
+        content.style.display = "block";
+    }
+
+    initData() {
+        let inputFields = document.querySelectorAll("."+this.selector+"Input");
         for(const property in this) {
             for(element of inputFields) {
+                console.log(property);
                 if(element.id.toLowerCase().includes(property)) {
                     element.value = this[property];
                     break;
@@ -117,11 +131,13 @@ class saveFile {
 }
 
 function createEventlisteners(saveFileObject, querrySelector) {
-    let inputFields = document.querySelectorAll(querrySelector);
+    let inputFields = document.querySelectorAll("."+querrySelector+"Input");
     for(const property in saveFileObject) {
         for(element of inputFields) {
             if(element.id.toLowerCase().includes(property)) {
-                element.addEventListener("change", function () {saveFileObject[property] = this.value});
+                element.addEventListener("change", function () {
+                    typeof(saveFileObject[property]) === "number" ? saveFileObject[property] = parseInt(this.value,10) : saveFileObject[property] = this.value; 
+                });
                 break;
             }
         }
@@ -130,8 +146,9 @@ function createEventlisteners(saveFileObject, querrySelector) {
 
 //Wrapper for testing purposes
 function parseSummary(data) {
-    summaryData = new saveFile(data, summaryDefinition);
-    createEventlisteners(summaryData, ".summaryInput");
+    summaryData = new saveFile(data, summaryDefinition, "summary");
+    createEventlisteners(summaryData, summaryData.selector);
+    summaryData.initData();
 }
 
 function parseArchivement(data) {
@@ -147,7 +164,9 @@ function parseInventory(data) {
 }
 
 function parseMainQuest(data) {
-
+    mainQuestData = new saveFile(data, mainQuestDefinition, "quests");
+    createEventlisteners(mainQuestData, mainQuestData.selector);
+    mainQuestData.initData();
 }
 
 function parsePlayerData(data) {
@@ -158,11 +177,22 @@ function parseSubQuest(data) {
 
 }
 
+function hideAll() {
+    let contents = document.querySelectorAll(".content-element");
+    for(element of contents) {element.style.display = "none"}
+}
+
 function showSummary() {
+    hideAll();
     summaryData.showData()
-    contents.style.display = "flex"
+    contents.style.display = "flex";
+}
+
+function showQuests() {
+    hideAll();
+    mainQuestData.showData()
+    contents.style.display = "flex";
 }
 
 function saveFiles() {
-
 }

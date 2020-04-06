@@ -17,3 +17,13 @@ let summaryDefinition = {
     "medal"     : {"len": 4, "offset": 56, "dataType": 32},
     "playtime"  : {"len": 4, "offset": 60, "dataType": 32}
 }
+
+let mainQuestDefinition = {
+    "mainquest"     : {"len": 4, "offset": 0, "dataType": 32}
+}
+
+let playerDataDefinition = {
+    "level"         : {"len": 4, "offset": 0, "dataType": 32},
+    "padding"       : {"len": 4, "offset": 0, "dataType": 32},
+    ""
+}

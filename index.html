@@ -20,12 +20,12 @@
                 <button class="tablinks">Achievements</button>
                 <button class="tablinks">PlayerData</button>
                 <button class="tablinks">Inventory</button>
-                <button class="tablinks">Quests</button>
+                <button class="tablinks" onclick="showQuests()">Quests</button>
                 <button class="tablinks">Global Flags</button>
             </div>
             <div id="contents">
                 <div id="Summary">
-                    <div class="content-element">
+                    <div class="content-element" id="summary-content">
                         <p>Name:</p>
                         <input type="text" maxlength="8" class="summaryInput" id="summaryName">
                         
@@ -48,11 +48,25 @@
                         <input type="number" min="0" max="2147483647" class="summaryInput" id="summaryPlaytime">
                     </div>
                 </div>
-                <div id="Achievements"></div>
-                <div id="PlayerData"></div>
-                <div id="Inventory"></div>
-                <div id="Quests"></div>
-                <div id="GlobalFlags"></div>
+                <div id="Achievements">
+                    <div class="content-element" id="achievements-content">
+                    </div>
+                </div>
+                <div id="PlayerData">
+                    <div class="content-element" id="playerdata-content"></div>
+                </div>
+                <div id="Inventory">
+                    <div class="content-element" id="inventory-content"></div>
+                </div>
+                <div id="Quests">
+                    <div class="content-element" id="quests-content">
+                        <p>Main Quest:</p>
+                        <select class="questsInput" id="questsMainQuest"></select>
+                    </div>
+                </div>
+                <div id="GlobalFlags">
+                    <div class="content-element" id="globalflags-content"></div>
+                </div>
             </div>
             <label class="button" id="save" onclick="saveFiles()">Save File</label>
         </div>
@@ -60,7 +74,7 @@
     <script src="lib/FileSaver.js"></script>
     <script src="lib/jszip.min.js"></script>
     <script src="src/util.js"></script>
-    <script src="src/gamedata.js"></script>
-    <script src="src/Summary.js"></script>
+    <script src="src/gameData.js"></script>
+    <script src="src/fileDefinitions.js"></script>
     <script src="src/main.js"></script>
 </html>
