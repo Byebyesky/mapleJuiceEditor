@@ -78,7 +78,7 @@ function handleFiles(files) {
                 parseGlobalFlag(binaryData)
             } else if (element.name === 'inventory.dat') {
                 parseInventory(binaryData);
-            } else if (element.name === 'mainQuest.dat') {
+            } else if (element.name === 'mainQuest.dat' && element.size === 4) {
                 parseMainQuest(binaryData);
             } else if (element.name === 'playerData.dat') {
                 parsePlayerData(binaryData);
@@ -96,18 +96,43 @@ function handleFiles(files) {
 class saveFile {
     constructor(data, definition, selector) {
         this.selector = selector;
+        let lastOffset = 0;
         for(const property in definition) {
+            let offset = definition[property].offset
             if(definition[property].dataType == "string") {
                 this[property] = "";
-                for(let index = definition[property].offset; index < definition[property].offset + definition[property].len; index+=2) {
+                for(let index = offset; index < offset + 16; index+=2) {
                     let char = read16(data, index);
                     if(char === 0) break;
                     this[property] += String.fromCharCode(char)
+                    
                 }
             }
+
             else if (typeof(definition[property].dataType) === "number") {
-                this[property] = readNumber(data, definition[property].offset, definition[property].dataType);
+                this[property] = readNumber(data, offset, definition[property].dataType);
             }
+
+            else if (definition[property].dataType === "itemlist") {
+                if(offset === "var") {
+                    let keys = Object.keys(this);
+                    offset = lastOffset + this[keys[keys.length-1]].size;
+                }
+                let size = read32(data, offset);
+                offset += 4;
+                let items = [];
+                if(size) {
+                    for(let i = 0; i < size; i+=12) {
+                        let id = read32(data, offset+i);
+                        let amount = read32(data, offset+i+4);
+                        let isNew = read32(data, offset+i+8);
+                        items.push(new item(id, amount, isNew));
+                        console.log(i);
+                    }
+                }
+                this[property] = new itemlist(size, items);
+            }
+            lastOffset = offset;
         }
     }
 
@@ -120,7 +145,6 @@ class saveFile {
         let inputFields = document.querySelectorAll("."+this.selector+"Input");
         for(const property in this) {
             for(element of inputFields) {
-                console.log(property);
                 if(element.id.toLowerCase().includes(property)) {
                     element.value = this[property];
                     break;
@@ -160,7 +184,9 @@ function parseGlobalFlag(data) {
 }
 
 function parseInventory(data) {
-
+    inventoryData = new saveFile(data, inventoryDefinition, "inventory");
+    createEventlisteners(inventoryData, inventoryData.selector);
+    inventoryData.initData();
 }
 
 function parseMainQuest(data) {
