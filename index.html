@@ -19,7 +19,7 @@
                 <button class="tablinks" onclick="showSummary()">Summary</button>
                 <button class="tablinks">Achievements</button>
                 <button class="tablinks">PlayerData</button>
-                <button class="tablinks">Inventory</button>
+                <button class="tablinks" onclick="showInventory()">Inventory</button>
                 <button class="tablinks" onclick="showQuests()">Quests</button>
                 <button class="tablinks">Global Flags</button>
             </div>
@@ -58,7 +58,13 @@
                     </div>
                 </div>
                 <div id="Inventory">
-                    <div class="content-element" id="inventory-content"></div>
+                    <div class="content-element" id="inventory-content">
+                        <p>Quickslot1:</p>
+                        <select class="inventoryInput item" id="inventoryQuickSlot1"></select>
+                        <p>Quickslot2:</p>
+                        <select class="inventoryInput item" id="inventoryQuickSlot2"></select>
+
+                    </div>
                 </div>
                 <div id="Quests">
                     <div class="content-element" id="quests-content">

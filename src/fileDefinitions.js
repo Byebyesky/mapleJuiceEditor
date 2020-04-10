@@ -23,8 +23,8 @@ let mainQuestDefinition = {
 }
 
 let inventoryDefinition = {
-    "quickSlot1"    : { "offset": 0,        "dataType": 32              },
-    "quickSlot2"    : { "offset": 4,        "dataType": 32              },
+    "quickslot1"    : { "offset": 0,        "dataType": 32              },
+    "quickslot2"    : { "offset": 4,        "dataType": 32              },
     "money"         : { "offset": 8,        "dataType": 32              },
     "armor"         : { "offset": 12,       "dataType": "itemlist"      },
     "accessory"     : { "offset": "var",    "dataType": "itemlist"      },

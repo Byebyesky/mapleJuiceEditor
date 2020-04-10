@@ -40,6 +40,16 @@ function init() {
         option.value = index;
         questsMainQuest.add(option)
     }
+    
+    for(const property in itemsEN)  {
+        let itemSelects = document.querySelectorAll(".item");
+        for(element of itemSelects) {
+            let option = document.createElement('option');
+            option.text = itemsEN[property];
+            option.value = property;
+            element.add(option)
+        }
+    }
 }
 
 //Helper Functions
@@ -217,6 +227,12 @@ function showSummary() {
 function showQuests() {
     hideAll();
     mainQuestData.showData()
+    contents.style.display = "flex";
+}
+
+function showInventory() {
+    hideAll();
+    inventoryData.showData()
     contents.style.display = "flex";
 }
 
