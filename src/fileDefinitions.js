@@ -16,7 +16,7 @@ let summaryDefinition = {
     "earring"       : { "offset": 52,   "dataType": 32      },
     "medal"         : { "offset": 56,   "dataType": 32      },
     "playtime"      : { "offset": 60,   "dataType": 32      }
-}
+} //size 64 bytes
 
 let mainQuestDefinition = {
     "mainquest"     : { "offset": 0,    "dataType": 32      }
@@ -37,5 +37,14 @@ let inventoryDefinition = {
 }
 
 let playerDataDefinition = {
-    "level"    : { "offset": 0,        "dataType": 8              },
+    "level"     : { "offset": 0,        "dataType": 8              },
+    "unk"       : { "offset": 1,        "dataType": 8              },
+    "unk2"      : { "offset": 2,        "dataType": 16             },
+    "exp"       : { "offset": 4,        "dataType": 32             },
+    "hp"        : { "offset": 8,        "dataType": 16             },
+    "mp"        : { "offset": 10,       "dataType": 16             },
+    "location"  : { "offset": 12,       "dataType": 32             },
+    //"exp"       : { "offset": 2,        "dataType": 8              },
+    //"exp"       : { "offset": 2,        "dataType": 8              },
+    //"exp"       : { "offset": 2,        "dataType": 8              },
 }

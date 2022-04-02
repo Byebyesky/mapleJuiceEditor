@@ -40,7 +40,8 @@ function init() {
         option.value = index;
         questsMainQuest.add(option)
     }
-    
+
+    //Populate Item Names
     for(const property in itemsEN)  {
         let itemSelects = document.querySelectorAll(".item");
         for(element of itemSelects) {
@@ -49,6 +50,14 @@ function init() {
             option.value = property;
             element.add(option)
         }
+    }
+
+    //Populate Item Names
+    for(const property in mapsEN)  {
+        let option = document.createElement('option');
+        option.text = mapsEN[property];
+        option.value = property;
+        playerdataLocation.add(option)
     }
 }
 
@@ -115,7 +124,6 @@ class saveFile {
                     let char = read16(data, index);
                     if(char === 0) break;
                     this[property] += String.fromCharCode(char)
-                    
                 }
             }
 
@@ -206,7 +214,9 @@ function parseMainQuest(data) {
 }
 
 function parsePlayerData(data) {
-    
+    playerData = new saveFile(data, playerDataDefinition, "playerdata");
+    createEventlisteners(playerData, playerData.selector);
+    playerData.initData();
 }
 
 function parseSubQuest(data) {
@@ -233,6 +243,24 @@ function showQuests() {
 function showInventory() {
     hideAll();
     inventoryData.showData()
+    contents.style.display = "flex";
+}
+
+function showPlayerData() {
+    hideAll();
+    playerData.showData()
+    contents.style.display = "flex";
+}
+
+function showAchievements() {
+    hideAll();
+    //achievementData.showData()
+    contents.style.display = "flex";
+}
+
+function showFlags() {
+    hideAll();
+    //flagData.showData()
     contents.style.display = "flex";
 }
 

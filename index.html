@@ -17,11 +17,11 @@
         <div id="edit-area">
             <div class="tab">
                 <button class="tablinks" onclick="showSummary()">Summary</button>
-                <button class="tablinks">Achievements</button>
-                <button class="tablinks">PlayerData</button>
+                <button class="tablinks" onclick="showAchievements()">Achievements</button>
+                <button class="tablinks" onclick="showPlayerData()">PlayerData</button>
                 <button class="tablinks" onclick="showInventory()">Inventory</button>
                 <button class="tablinks" onclick="showQuests()">Quests</button>
-                <button class="tablinks">Global Flags</button>
+                <button class="tablinks" onclick="showFlags()">Global Flags</button>
             </div>
             <div id="contents">
                 <div id="Summary">
@@ -54,7 +54,11 @@
                 </div>
                 <div id="PlayerData">
                     <div class="content-element" id="playerdata-content">
-
+                        <p>Level:</p>
+                        <input type="number" min="0" max="255" class="numberInput playerdataInput" id="playerdataLevel">
+                        
+                        <p>Location:</p>
+                        <select class="playerdataInput location" id="playerdataLocation"></select>
                     </div>
                 </div>
                 <div id="Inventory">
